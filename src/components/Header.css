@@ -1,0 +1,88 @@
+/* src/components/Header.css */
+
+.header {
+    background-color: #007bff; /* **The blue header background***/
+    color: white;
+    padding: 0; /* No padding directly on header, handled by inner wrapper */
+    display: flex; /* Allows header-content-wrapper to be centered */
+    justify-content: center; /* Centers the header-content-wrapper */
+    align-items: center;
+    position: fixed; /* Keeps header at the top */
+    width: 100vw; /* **Header spans the entire viewport width** */
+    left: 0; /* Ensures it starts from the very left edge */
+    top: 0;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Styles for the inner wrapper that holds the logo and nav/menu */
+.header-content-wrapper {
+    width: 100%; /* Take full width of parent (header) up to max-width */
+    max-width: 600px; /* Default narrow width for mobile */
+    padding: 10px 15px; /* Padding inside the header for content */
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, nav/menu to right */
+    align-items: center;
+    box-sizing: border-box;
+
+    @media (min-width: 768px) {
+        max-width: 960px; /* Expands to match #root's desktop max-width */
+    }
+}
+
+.header-logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Desktop Navigation Links */
+.nav-links-desktop {
+    display: none; /* Hidden by default on small screens */
+    align-items: center;
+    gap: 15px; /* Space between nav items */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-links-desktop a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links-desktop a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-button {
+    background-color: #28a745; /* Green button */
+    border: none;
+    cursor: pointer;
+}
+
+.header-button:hover {
+    background-color: #218838;
+}
+
+/* Mobile menu icon (hamburger) */
+.menu-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+    display: block; /* Show hamburger icon by default on mobile*/
+}
+
+/* Media query to control responsiveness: */
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none; /* Hide hamburger icon on desktop */
+    }
+
+    .nav-links-desktop {
+        display: flex; /* Show desktop nav links on desktop*/
+    }
+}

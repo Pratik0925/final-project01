@@ -1,0 +1,484 @@
+/* src/index.css */
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #64E1D9; /* The exact color from your screenshot */
+    color: #333; /* Keep existing text color or adjust if needed */
+    font-size: 17px; /* Increase from e.g., 16px or 15px for better readability */
+}
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* --- Header & Navigation Styles --- */
+.header {
+    background-color: #1e88e5; /* A vibrant blue for the header as seen in screenshot */
+    color: white;
+    padding: 15px 20px;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Puts college name on left, nav on right */
+    align-items: center; /* Vertically centers items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.college-name {
+    font-size: 1.8em; /* Adjust as needed */
+    font-weight: bold;
+    text-decoration: none; /* Remove underline for the college name link */
+    color: white;
+    flex-shrink: 0; /* Prevents the name from shrinking on smaller screens */
+}
+
+.nav-links {
+    display: flex; /* For horizontal navigation items */
+    gap: 25px; /* Space between links */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em; /* Adjust as needed */
+    padding: 5px 0;
+    position: relative; /* For the underline effect */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.nav-links a:hover {
+    color: #bbdefb; /* Lighter blue on hover */
+}
+
+/* Underline effect for active/hover links */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: white;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after { /* NavLink adds 'active' class to current page link */
+    width: 100%;
+}
+
+/* Apply Now button in header */
+.apply-now-btn {
+    background-color: #28a745; /* Green button as seen in screenshot */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none; /* Ensure no default button border */
+    cursor: pointer;
+    margin-left: 20px; /* Space from the last nav link */
+}
+
+.apply-now-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Hamburger menu for mobile (hidden by default on desktop) */
+.hamburger-menu {
+    display: none; /* Hidden by default on larger screens */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px; /* Space between bars */
+    padding: 5px; /* Increase clickable area */
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 1; /* Start visible, can animate opacity */
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+}
+
+.mobile-menu-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2em;
+    cursor: pointer;
+    color: #333;
+}
+
+.mobile-menu-content .nav-links-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-menu-content .nav-links-mobile a {
+    color: #1e88e5; /* Blue text for mobile links */
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.mobile-menu-content .nav-links-mobile a:hover {
+    color: #0d47a1; /* Darker blue on hover for mobile links */
+}
+
+/* Media Query for Mobile (Header) */
+@media (max-width: 768px) {
+    .nav-links, .apply-now-btn {
+        display: none; /* Hide desktop nav and button on smaller screens */
+    }
+    .hamburger-menu {
+        display: flex; /* Show hamburger menu on smaller screens */
+    }
+}
+
+/* --- Main content area padding & Info Card styling --- */
+.page-content {
+    padding: 20px; /* Adjust as needed */
+    max-width: 900px; /* Max width for content */
+    margin: 20px auto; /* Center the content */
+    background-color: #f8f9fa; /* Light background for the content area */
+    border-radius: 8px; /* Rounded corners for the content area */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.info-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings within info cards */
+.info-card h2,
+.info-card h3,
+.info-card h4 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Specific class for blue, centered page headings (if used in JSX) */
+.page-heading-blue {
+    color: #1e88e5;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Paragraphs within info cards */
+.info-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 1.05em; /* Adjusted font size */
+}
+
+/* List styling */
+ul, ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+ul li, ol li {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 1.05em; /* Adjusted font size */
+}
+
+/* Navigation Link Text Style (for 'View on Google Maps', 'Courses page', 'Contact us' links) */
+.nav-link-text {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nav-link-text:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* --- Table Styling Rules --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #e6f7ff;
+    color: #1e88e5;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e0f7fa;
+}
+
+/* Responsive Adjustments for Tables on Smaller Screens */
+@media (max-width: 600px) {
+    table {
+        font-size: 0.9em;
+    }
+    table th,
+    table td {
+        padding: 8px;
+    }
+}
+
+/* Container for multiple campus images */
+.campus-images-container {
+    display: flex; /* Arrange images in a row */
+    flex-wrap: wrap; /* Allow images to wrap to the next line on smaller screens */
+    gap: 15px; /* Space between images */
+    justify-content: center; /* Center images horizontally */
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* New style for the campus feature image */
+.campus-feature-image {
+    width: calc(50% - 7.5px); /* Two images per row with a gap */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer; /* Indicate the image is clickable */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transition for animation */
+}
+
+/* Animation class when an image is clicked */
+.campus-feature-image.is-animating {
+    transform: scale(1.05); /* Slightly zoom in */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add a more prominent shadow */
+}
+
+/* Optional: Add a subtle hover effect for better UX */
+.campus-feature-image:hover {
+    transform: scale(1.01); /* Slightly zoom in on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+/* Adjust image width for smaller screens to be 100% */
+@media (max-width: 768px) {
+    .campus-feature-image {
+        width: 100%; /* Single image per row on mobile */
+    }
+}
+
+
+/* College Button style (for Inquire About Courses and Visit Campus) */
+.college-button {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.college-button:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* Form related styles (if you decide to add forms back) */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 5px;
+    font-weight: normal;
+    color: #333;
+    text-align: left;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 300px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form .college-button {
+    margin-top: 20px;
+    align-self: flex-start;
+    width: auto;
+    padding: 10px 25px;
+}
+
+
+/* --- HERO SECTION STYLES --- */
+.hero-section {
+    background-image: url('/images/hero-background.jpg'); /* Your image is hero-background.jpg */
+    background-size: contain; /* CHANGED: This will show the entire image, but may result in empty space (letterboxing) if aspect ratios don't match. */
+    background-position: center; /* Centers the image within the container */
+    background-repeat: no-repeat; /* Only one instance of the image */
+    background-color: #1a2a47; /* ADDED: A solid background color to fill the empty space. Pick a color that complements your image, like the dark blue from your image background. */
+    
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px; /* Adjust this height if the image feels too squashed or too tall */
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 900px;
+    overflow: hidden; /* Helps with border-radius and clean edges */
+    position: relative;
+}
+
+/* Optional: Dark overlay to make text more readable */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: 1;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    max-width: 700px;
+    width: 100%;
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+/* Styles for actual <img> tags (like emblems/logos inside the hero-section) */
+.hero-logo {
+    height: 50px; /* Set a fixed height for the logo */
+    width: auto; /* Allow width to adjust proportionally */
+    object-fit: contain; /* Ensures the entire logo is visible within its space */
+}
+
+/* Footer styles (ensure these are present from previous steps) */
+.app-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.app-footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* NEW: Styles for the "Ready to explore our courses?" section and text */
+.explore-courses-section {
+    text-align: center; /* Centers inline and inline-block content within this div */
+    margin-top: 30px; 
+    margin-bottom: 20px;
+    width: 100%; /* Ensures the div takes full width of its parent */
+    box-sizing: border-box; /* Ensures padding/border is included in width calculation */
+}
+
+.explore-courses-text {
+    font-size: 1.2em; /* Ensures the desired font size */
+    color: #333; /* Ensures the desired text color */
+    margin-bottom: 15px; /* Spacing below the text */
+    text-align: center;
+    /* Font family should inherit from the body, but explicitly setting it can ensure consistency */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 0; /* Remove default paragraph top margin if any */
+}
