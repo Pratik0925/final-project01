@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import Admissions from './pages/Admissions';
 
 import './index.css';
+import ChatbotComponent from './components/Chatbot/ChatbotComponents';
 
 function App() {
   return (
@@ -25,9 +26,11 @@ function App() {
           <Route path="/admissions" element={<Admissions />} />
         </Routes>
       </main>
+      <ChatbotComponent />
       <Footer />
     </Router>
   );
+
 }
 
 export default App;
