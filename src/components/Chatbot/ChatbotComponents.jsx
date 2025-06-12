@@ -177,13 +177,13 @@ const ChatbotComponent = () => {
                   )}
                   <p className={`${message.sender}-message`}>{message.text}</p>
                   {message.sender === "user" && (
-                    <div className="avatar user-avatar">:bust_in_silhouette:</div>
+                    <div className="avatar user-avatar">👤</div>
                   )}
                 </div>
               ))}
               {loading && (
                 <div className="message-row bot">
-                  <div className="avatar bot-avatar">:robot_face:</div>
+                  <div className="avatar bot-avatar">🤖</div>
                   <p className="bot-message loading-indicator">Typing...</p>
                 </div>
               )}
