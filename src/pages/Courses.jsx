@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Courses = () => {
-    // This is the YouTube Video ID from the embed code you provided: https://www.youtube.com/embed/xhpLDRY0lKs?si=hzw1FKzdcG9agulZ
-    const kolhapurCampusVideoId = '69'; // Use the correct video ID from the src attribute
-    // Using the privacy-enhanced embed URL for better user privacy.
-    const embedUrl = `https://www.youtube-nocookie.com/embed/${kolhapurCampusVideoId}`;
+   // ...existing code...
+const kolhapurCampusVideoId = 'M-jZtoB-aVY'; // Correct YouTube video ID
+const embedUrl = `https://www.youtube.com/embed/${kolhapurCampusVideoId}`;
+// ...existing code...
 
     return (
         <div className="page-content">
