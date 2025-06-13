@@ -175,6 +175,8 @@ const ChatbotComponent = () => {
                   {message.sender === "bot" && (
                     <div className="avatar bot-avatar">🤖</div>
                   )}
+
+                  e
                   <p className={`${message.sender}-message`}>{message.text}</p>
                   {message.sender === "user" && (
                     <div className="avatar user-avatar">👤</div>
